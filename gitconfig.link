@@ -1,0 +1,25 @@
+[color]
+	ui = true
+[merge]
+	tool = vimdiff
+[user]
+	name = Sayre Blades
+	email = sayre.blades@gmail.com
+[credential]
+	helper = osxkeychain
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	unstage = reset HEAD --
+[core]
+	excludesfile = /Users/sayreblades/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = matching

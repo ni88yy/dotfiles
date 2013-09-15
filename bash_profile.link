@@ -1,0 +1,61 @@
+set -o vi
+
+source ~/.git-completion.bash
+
+alias ls='ls -lhFG'
+
+function PWD {
+tmp=${PWD%/*/*/*/*};
+[ ${#tmp} -gt 0 -a "$tmp" != "$PWD" ] && echo ${PWD:${#tmp}+1} || echo $PWD;
+}
+
+function contains {
+for word in $1; do
+    [[ $word = $2 ]] && return 0
+done
+return 1
+}
+
+function g {
+if [ -z "$VIMS" ]; then
+    gvim --remote-silent $@
+else
+    list=`vim --serverlist`
+    if contains "$list" "$VIMS"; then
+        vim --servername ${VIMS} --remote $@
+    else
+        vim --servername ${VIMS} $@
+    fi
+fi
+}
+
+function prompt_command() {
+if [ -n "${TMUX}" ]; then
+    local _tmux_env
+    _tmux_env=$( tmux show-environment )
+    if [ "${_tmux_env}" != "${_expected_tmux_env}" ]; then
+        eval $( echo "${_tmux_env}" | \
+            sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
+            -e 's/^-/unset /' \
+            -e 's/$/;/' )
+        _expected_tmux_env="${_tmux_env}"
+    fi
+fi
+}
+
+PROMPT_COMMAND=prompt_command
+export PROMPT_COMMAND
+export -f prompt_command
+export EDITOR='vim'
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export SBT_OPTS=-XX:MaxPermSize=512m
+export PS1='\e[0;32m[\u] \w\e[m \n\$ '
+export JREBEL_PATH=/Users/sayreblades/bin/jrebel/jrebel.jar
+export VIMS=""
+# export PS1='\e[0;32m[\t][\h:\u] \w\e[m \n\$ '
+# PROMPT_COMMAND='echo -ne "\033"'0;${PWD##*/}\007"''"
+# PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+# PROMPT_COMMAND='echo -ne "\033]0;`basename $PWD`\007"'
+# PROMPT_COMMAND='echo -ne "\033]0;`PWD`\007"'
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

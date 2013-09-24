@@ -23,7 +23,6 @@ require(linkFilePaths.length > 0)
 // print summary of action
 val destPath = Paths.get(homeDirPath.toString).toRealPath()
 require(Files.isDirectory(destPath))
-// println(s"""Creating symbolic links into ${destPath} for each link file: \n${linkFilePaths.mkString("\n")}\n""")
 
 // perform the linkage
 for(linkFilePath <- linkFilePaths) {

@@ -47,7 +47,7 @@ PROMPT_COMMAND=prompt_command
 export PROMPT_COMMAND
 export -f prompt_command
 export EDITOR='vim'
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=~/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
 export SBT_OPTS=-XX:MaxPermSize=512m
 export PS1='\e[0;32m[\u] \w\e[m \n\$ '
 export JREBEL_PATH=/Users/sayreblades/bin/jrebel/jrebel.jar

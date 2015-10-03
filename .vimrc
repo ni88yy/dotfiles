@@ -15,6 +15,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 " #####################################################################
@@ -188,6 +189,9 @@ endif
 " #####################################################################
 let g:neocomplcache_enable_at_startup = 1
 
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 
 " #####################################################################
 " ctrl-p
@@ -196,6 +200,17 @@ let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/](\.git|\.hg|\.svn|target|www)$',
             \ 'file' : '\v\.(class)$',
             \}
+
 let g:ctrlp_working_path_mode = 'rc'
 
+
+" #####################################################################
+" tmuxline
+" #####################################################################
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '>',
+    \ 'right' : '',
+    \ 'right_alt' : '<',
+    \ 'space' : ' '}
 

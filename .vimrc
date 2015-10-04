@@ -94,8 +94,8 @@ nnoremap <silent> <leader>so :w<CR>:so ~/.vimrc<CR>:echom ".vimrc saved and sour
 if bufwinnr(1)
   nnoremap ∆ <C-W>-
   nnoremap ˚ <C-W>+
-  nnoremap ˙ <C-W><
-  nnoremap ¬ <C-W>>
+  nnoremap ¬ <C-W><
+  nnoremap ˙ <C-W>>
 endif
 
 " search current highlight

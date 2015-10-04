@@ -75,6 +75,9 @@ cnoremap <c-l> <right>
 cnoremap ^     <home>
 cnoremap $     <end>
 
+" close current window
+nnoremap <leader>k :close<CR>
+
 " split
 noremap <leader>vs :vsp<cr><c-^><c-w>p
 noremap <leader>sp :rightbelow vsplit #<cr>

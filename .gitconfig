@@ -7,3 +7,5 @@
 [user]
 	name = Sayre Blades
 	email = sayre.blades@gmail.com
+[push]
+	default = matching

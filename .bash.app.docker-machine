@@ -1,5 +1,13 @@
 #! /bin/bash
 
+docker-init ()
+{
+    name=${1:-default}
+    docker-machine start $name >> /dev/null
+    eval "$(docker-machine env $name)"
+    docker-machine ip $name
+}
+
 _cli_bash_autocomplete() {
      local cur prev opts base
      COMPREPLY=()

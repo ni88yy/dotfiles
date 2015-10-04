@@ -133,7 +133,7 @@ set tags=./.tags,.tags,./tags,tags
 " #####################################################################
 syntax on
 
-colorscheme bubblegum-256-dark
+colorscheme solarized
 
 " toggle bacground between dark and light
 nnoremap <leader>b :call ToggleBackground()<cr>

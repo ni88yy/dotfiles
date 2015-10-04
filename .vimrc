@@ -15,6 +15,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
@@ -87,7 +88,7 @@ vnoremap il :<c-u>silent! normal! ^v$g_<cr>
 
 " Quickly edit/source the vimrc file
 nnoremap <leader>ec :e $MYVIMRC<CR>
-nnoremap <silent> <leader>so :w<CR>:so ~/.vimrc<CR>:echom "saved and sourced: " . expand('%:p')<CR>
+nnoremap <silent> <leader>so :w<CR>:so ~/.vimrc<CR>:echom ".vimrc saved and sourced"<CR>
 
 " Maps Alt-[h,j,k,l] to resizing a window split
 if bufwinnr(1)

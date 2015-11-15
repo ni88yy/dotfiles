@@ -9,3 +9,5 @@
 	email = sayre.blades@gmail.com
 [push]
 	default = matching
+[core]
+	excludesfile = /Users/sayreblades/.gitignore_global

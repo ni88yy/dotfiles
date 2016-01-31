@@ -1,0 +1,3 @@
+# vi in other programs that use readline
+set editing-mode vi
+

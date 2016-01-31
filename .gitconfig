@@ -10,4 +10,4 @@
 [push]
 	default = matching
 [core]
-	excludesfile = /Users/sayre2/.gitignore_global
+	excludesfile = ~/.gitignore_global

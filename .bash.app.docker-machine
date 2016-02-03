@@ -1,7 +1,12 @@
 #! /bin/bash
 
 docker-clean () {
+    docker stop `docker ps --format "{{.Names}}"`
     docker rm `docker ps -a --format "{{.ID}}"`
+}
+
+docker-clean-i() {
+    docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 }
 
 docker-init ()

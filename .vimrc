@@ -4,6 +4,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'tpope/vim-commentary'
 Plug 'avakhov/vim-yaml'
 Plug 'Shougo/neocomplcache.vim'
 Plug 'altercation/vim-colors-solarized'

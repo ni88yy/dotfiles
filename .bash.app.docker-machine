@@ -5,7 +5,20 @@ docker-init ()
     name=${1:-default}
     docker-machine start $name >> /dev/null
     eval "$(docker-machine env $name)"
+    update-docker-hosts
     docker-machine ip $name
+}
+
+update-docker-hosts(){
+    # clear existing *.docker.local entries from /etc/hosts
+    sudo sed -i '' '/\.docker\.local$/d' /etc/hosts
+    # iterate over each machine
+    docker-machine ls | tail -n +2 | awk '{print $1}' \
+    | while read -r MACHINE; do
+        MACHINE_IP="$(docker-machine ip ${MACHINE} 2>/dev/null)"
+        [[ -n $MACHINE_IP ]] && sudo /bin/bash -c "echo \"${MACHINE_IP} ${MACHINE}.docker.local\" >> /etc/hosts"
+        export no_proxy=$no_proxy,$MACHINE_IP
+    done
 }
 
 _cli_bash_autocomplete() {

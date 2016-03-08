@@ -4,6 +4,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'elmcast/elm-vim'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 Plug 'avakhov/vim-yaml'
 Plug 'Shougo/neocomplcache.vim'
@@ -220,3 +223,21 @@ let g:tmuxline_separators = {
     \ 'right_alt' : '<',
     \ 'space' : ' '}
 
+" #####################################################################
+" EasyAlign
+" #####################################################################
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+
+" #####################################################################
+" JSBeautify
+" #####################################################################
+autocmd FileType javascript vnoremap <buffer>  <leader>fo :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <leader>fo :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <leader>fo :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <leader>fo :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <leader>fo :call RangeCSSBeautify()<cr>

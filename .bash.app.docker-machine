@@ -15,18 +15,22 @@ docker-init ()
     docker-machine start $name >> /dev/null
     eval "$(docker-machine env $name)"
     update-docker-hosts
-    docker-machine ip $name
 }
 
 update-docker-hosts(){
-    # clear existing *.docker.local entries from /etc/hosts
-    sudo sed -i '' '/\.docker$/d' /etc/hosts
     # iterate over each machine
-    docker-machine ls | tail -n +2 | awk '{print $1}' \
-    | while read -r MACHINE; do
+    docker-machine ls | tail -n +2 | awk '{print $1}' | while read -r MACHINE; do
         MACHINE_IP="$(docker-machine ip ${MACHINE} 2>/dev/null)"
-        [[ -n $MACHINE_IP ]] && sudo /bin/bash -c "echo \"${MACHINE_IP} ${MACHINE}.docker\" >> /etc/hosts"
-        export no_proxy=$no_proxy,$MACHINE_IP
+        MACHINE_DOCKER="${MACHINE}.docker"
+        ETC_HOSTS_LINE="$MACHINE_IP $MACHINE_DOCKER"
+        echo "$ETC_HOSTS_LINE"
+        # find existing host line in /etc/hosts; if there do nothing
+        if ! grep -q $ETC_HOSTS_LINE /etc/hosts 2>/dev/null; then
+            # otherwise remove old docker machine if it exists, and ad new one
+            sudo sed -i '' "/.*${MACHINE_DOCKER}/d" /etc/hosts
+            [[ -n $MACHINE_IP ]] && sudo /bin/bash -c "echo \"${ETC_HOSTS_LINE}\" >> /etc/hosts"
+            export no_proxy=$no_proxy,$MACHINE_IP
+        fi
     done
 }
 

@@ -1,1 +1,3 @@
-/Users/sayre/dev/dotfiles/bin/hello.sh
+#!/bin/bash
+
+echo "hello sayre"

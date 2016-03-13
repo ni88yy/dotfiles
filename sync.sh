@@ -22,44 +22,29 @@ require(Files.isDirectory(dotFilesPath), s"$dotFilesPath is not a directory")
 val destPath = Paths.get(homeDirPath.toString).toRealPath()
 require(Files.isDirectory(destPath), s"$destPath is not a directory")
 
-// makes sure there are dot files
-val dotFiles = getDotFiles(dotFilesPath)
-require(dotFiles.length > 0, "not enough files")
-
-def getDotFiles(path:Path):List[Path] = {
-  Files
-    .newDirectoryStream(path, "*")
+def processFiles(sourcePath:Path, destPath:Path):Unit = {
+  // get dot files
+  Files.newDirectoryStream(sourcePath, "*")
     .filter(f => !excludeFiles.contains(f.getFileName.toString)) // filter out .git
     .map(_.toRealPath())
-    .toList
-}
-
-def processFiles(sourcePath:Path, destPath:Path):Unit = {
-  getDotFiles(sourcePath) foreach { dotFile =>
-    if(dotFile.toFile.isDirectory) {
-      val newSourcePath = Paths.get(sourcePath.toString, dotFile.getFileName.toString)
-      val newDestPath = Paths.get(destPath.toString, dotFile.getFileName.toString)
-      val newDestDir = newDestPath.toFile
-      if(!newDestDir.isDirectory) {
-        newDestDir.mkdirs
-        println(s"Created $newDestDir")
+    .foreach { dotFile =>
+      if(dotFile.toFile.isDirectory) {
+        val newSourcePath = Paths.get(sourcePath.toString, dotFile.getFileName.toString)
+        val newDestPath = Paths.get(destPath.toString, dotFile.getFileName.toString)
+        val newDestDir = newDestPath.toFile
+        if(!newDestDir.isDirectory) {
+          newDestDir.mkdirs
+          println(s"Created $newDestDir")
+        }
+        processFiles(newSourcePath, newDestPath)
+      } else {
+        val dotFilePath = Paths.get(destPath.toString, dotFile.getFileName.toString)
+        Try(Files.delete(dotFilePath))
+        Files.createSymbolicLink(dotFilePath, dotFile)
+        println(s"Created $dotFilePath")
       }
-      processFiles(newSourcePath, newDestPath)
-    } else {
-      val dotFilePath = Paths.get(destPath.toString, dotFile.getFileName.toString)
-      Try(Files.delete(dotFilePath))
-      Files.createSymbolicLink(dotFilePath, dotFile)
-      println(s"Created $dotFilePath")
     }
-  }
 }
 
 processFiles(currDirPath, homeDirPath)
 
-// perform the linkage
-//for(dotFile <- dotFiles) {
-//  val dotFilePath = Paths.get(destPath.toString, dotFile.getFileName.toString)
-//  Try(Files.delete(dotFilePath))
-//  Files.createSymbolicLink(dotFilePath, dotFile)
-//  println(s"Created $dotFilePath")
-//}

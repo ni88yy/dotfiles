@@ -39,7 +39,9 @@ def processFiles(sourcePath:Path, destPath:Path):Unit = {
         processFiles(newSourcePath, newDestPath)
       } else {
         val dotFilePath = Paths.get(destPath.toString, dotFile.getFileName.toString)
+        println(s"removing $dotFilePath")
         Try(Files.delete(dotFilePath))
+        println(s"Files.createSymbolicLink($dotFilePath, $dotFile)")
         Files.createSymbolicLink(dotFilePath, dotFile)
         println(s"Created $dotFilePath")
       }

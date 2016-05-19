@@ -11,6 +11,7 @@ if initialize_session "marix-tv-tizen"; then
   new_window
   run_cmd "vim README.md"
   split_v 30
+  run_cmd "http-server MarixTV/"
   split_h 50
   run_cmd "docker-init marix; echo; ls; echo; git status"
   split_v 50

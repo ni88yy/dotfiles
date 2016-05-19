@@ -9,6 +9,10 @@ docker-clean-i() {
     docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 }
 
+docker-clean-iall() {
+    docker rmi $(docker images | awk "{print $3}")
+}
+
 docker-init ()
 {
     name=${1:-default}

@@ -1,17 +1,17 @@
 # Set a custom session root path. Default is `$HOME`.
 # Must be called before `initialize_session`.
-session_root "~/dev/marix/marix-node/"
+session_root "~/dev/marix/marix-dev-init/"
 
 
 # Create session with specified name if it does not already exist. If no
 # argument is given, session name will be based on layout file name.
-if initialize_session "marix-node"; then
+if initialize_session "marix-dev-init"; then
 
   # Create a new window inline within session layout definition.
   new_window
-  run_cmd "vim README.md"
+  run_cmd "vim build.sbt"
   split_v 30
-  run_cmd "export MONGO_PORT_27017_TCP_ADDR=marix.docker; export NSQ_PORT_4150_TCP_ADDR=marix.docker"
+  run_cmd "docker-init marix; sbt"
   split_h 50
   run_cmd "docker-init marix; echo; ls; echo; git status"
   split_v 50

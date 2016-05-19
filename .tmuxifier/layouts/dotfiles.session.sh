@@ -11,7 +11,7 @@ if initialize_session "dotfiles"; then
   new_window
   run_cmd "vim README.md"
   split_v 20
-  split_v 50
+  split_h 50
   run_cmd "ls; echo; git status"
   select_pane 1
 

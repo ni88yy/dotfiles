@@ -4,24 +4,28 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'elmcast/elm-vim'
-Plug 'jason0x43/vim-js-indent'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-commentary'
-Plug 'avakhov/vim-yaml'
-Plug 'Shougo/neocomplcache.vim'
+Plug 'ternjs/tern_for_vim'
+Plug 'Valloric/YouCompleteMe' " http://tilvim.com/2013/08/21/js-autocomplete.html
+Plug 'SirVer/ultisnips'
 Plug 'altercation/vim-colors-solarized'
+Plug 'avakhov/vim-yaml'
 Plug 'baskerville/bubblegum'
 Plug 'bling/vim-airline'
 Plug 'derekwyatt/vim-scala'
+Plug 'edkolev/tmuxline.vim'
+Plug 'elmcast/elm-vim'
+Plug 'honza/vim-snippets'
+Plug 'jason0x43/vim-js-indent'
+Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'edkolev/tmuxline.vim'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " #####################################################################
@@ -232,4 +236,16 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+
+" #####################################################################
+" YouCompleteMe
+" #####################################################################
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+
+" #####################################################################
+" UltiSnipsExpandTrigger
+" #####################################################################
+let g:UltiSnipsExpandTrigger = "<tab>"
 

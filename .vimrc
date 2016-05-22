@@ -5,7 +5,7 @@ endif
 
 call plug#begin()
 Plug 'elmcast/elm-vim'
-Plug 'maksimr/vim-jsbeautify'
+Plug 'jason0x43/vim-js-indent'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 Plug 'avakhov/vim-yaml'
@@ -233,13 +233,3 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
-" #####################################################################
-" JSBeautify
-" #####################################################################
-autocmd FileType javascript vnoremap <buffer>  <leader>fo :call RangeJsBeautify()<cr>
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2
-autocmd FileType js vnoremap <buffer>  <leader>fo :call RangeJsBeautify()<cr>
-autocmd FileType json vnoremap <buffer> <leader>fo :call RangeJsonBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> <leader>fo :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <leader>fo :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <leader>fo :call RangeCSSBeautify()<cr>

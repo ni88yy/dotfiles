@@ -1,11 +1,11 @@
 # Set a custom session root path. Default is `$HOME`.
 # Must be called before `initialize_session`.
-session_root "~/dev/marix/marix-controller-app"
+session_root "~/dev/marix/marix-control-app"
 
 
 # Create session with specified name if it does not already exist. If no
 # argument is given, session name will be based on layout file name.
-if initialize_session "marix-controller-app"; then
+if initialize_session "marix-control-app"; then
 
   # Create a new window inline within session layout definition.
   new_window

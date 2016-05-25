@@ -47,9 +47,9 @@ set hidden        " put modified buffers in background
 set noswf         " turn off swap files for now, it gets annoying when continuous compilation compiles swap files
 
 " Dealing with tabs
-set tabstop=4     " Number of spaces that a <Tab> in the file counts for.
-set shiftwidth=4  " Number of spaces to use for each step of (auto)indent.  Used for |'cindent'|, |>>|, |<<|, etc
-set softtabstop=4 " Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>.
+set tabstop=2     " Number of spaces that a <Tab> in the file counts for.
+set shiftwidth=2  " Number of spaces to use for each step of (auto)indent.  Used for |'cindent'|, |>>|, |<<|, etc
+set softtabstop=2 " Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>.
 set expandtab     " tabs are spaces
 set autoindent    " new lines are indented the same as the previous line
 

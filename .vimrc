@@ -4,6 +4,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'leafgarland/typescript-vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'Valloric/YouCompleteMe' " http://tilvim.com/2013/08/21/js-autocomplete.html
 Plug 'SirVer/ultisnips'

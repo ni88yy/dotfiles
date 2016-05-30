@@ -13,9 +13,9 @@ if initialize_session "marix-tv-tizen"; then
   split_v 30
   run_cmd "http-server MarixTV/"
   split_h 50
-  run_cmd "docker-init marix; echo; ls; echo; git status"
+  run_cmd "ls; echo; git status"
   split_v 50
-  run_cmd "cd ../marix-compose/; docker-init marix; docker-compose logs"
+  run_cmd "cd ../marix-compose/; docker-compose logs"
   select_pane 2
 
 fi

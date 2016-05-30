@@ -11,7 +11,7 @@ if initialize_session "marix-gateway"; then
   new_window
   run_cmd "vim Dockerfile"
   split_v 20
-  run_cmd "docker-init marix; echo; ls; echo; git status"
+  run_cmd "ls; echo; git status"
   select_pane 1
 
 fi

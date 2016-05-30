@@ -15,7 +15,7 @@ if initialize_session "marix-control-app"; then
   split_h 50
   run_cmd ""
   split_v 50
-  run_cmd "cd ../marix-compose/; docker-init marix; docker-compose logs"
+  run_cmd "cd ../marix-compose/; docker-compose logs"
   select_pane 2
 
 fi

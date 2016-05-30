@@ -11,11 +11,11 @@ if initialize_session "marix-dev-init"; then
   new_window
   run_cmd "vim build.sbt"
   split_v 30
-  run_cmd "docker-init marix; sbt"
+  run_cmd "sbt"
   split_h 50
-  run_cmd "docker-init marix; echo; ls; echo; git status"
+  run_cmd "ls; git status"
   split_v 50
-  run_cmd "cd ../marix-compose/; docker-init marix; docker-compose logs"
+  run_cmd "cd ../marix-compose/; docker-compose logs"
   select_pane 2
 
 fi

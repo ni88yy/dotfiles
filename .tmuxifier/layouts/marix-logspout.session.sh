@@ -12,7 +12,7 @@ if initialize_session "marix-logspout"; then
   run_cmd "vim README.md"
   split_v 30
   split_h 50
-  run_cmd "docker-init marix; echo; ls; echo; git status"
+  run_cmd "ls; echo; git status"
   select_pane 2
 
 fi

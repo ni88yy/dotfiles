@@ -1,17 +1,19 @@
 # Set a custom session root path. Default is `$HOME`.
 # Must be called before `initialize_session`.
-session_root "~/dev/marix/marix-control-app"
+session_root "~/dev/marix/marix-kinesis-adapter/"
 
 
 # Create session with specified name if it does not already exist. If no
 # argument is given, session name will be based on layout file name.
-if initialize_session "marix-control-app"; then
+if initialize_session "marix-kineis-adapter"; then
 
   # Create a new window inline within session layout definition.
   new_window
-  run_cmd "vim config.xml"
+  run_cmd "vim build.sbt"
   split_v 30
+  run_cmd "sbt"
   split_h 50
+  run_cmd "echo; ls; echo; git status"
   split_v 50
   run_cmd "cd ../marix-compose/; docker-compose logs"
   select_pane 2

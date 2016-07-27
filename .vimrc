@@ -250,3 +250,8 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " #####################################################################
 let g:UltiSnipsExpandTrigger = "<tab>"
 
+
+" #####################################################################
+" UltiSnipsExpandTrigger
+" #####################################################################
+let g:typescript_indent_disable = 1

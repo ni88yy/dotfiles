@@ -4,29 +4,22 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'leafgarland/typescript-vim'
-Plug 'ternjs/tern_for_vim'
-Plug 'Valloric/YouCompleteMe' " http://tilvim.com/2013/08/21/js-autocomplete.html
-Plug 'SirVer/ultisnips'
-Plug 'altercation/vim-colors-solarized'
-Plug 'avakhov/vim-yaml'
-Plug 'baskerville/bubblegum'
-Plug 'bling/vim-airline'
-Plug 'derekwyatt/vim-scala'
-Plug 'edkolev/tmuxline.vim'
-Plug 'elmcast/elm-vim'
-Plug 'honza/vim-snippets'
-Plug 'jason0x43/vim-js-indent'
-Plug 'junegunn/vim-easy-align'
-Plug 'kien/ctrlp.vim'
-Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'baskerville/bubblegum'
+Plug 'altercation/vim-colors-solarized'
+Plug 'edkolev/tmuxline.vim'
+
+Plug 'Valloric/YouCompleteMe' " http://tilvim.com/2013/08/21/js-autocomplete.html
 call plug#end()
 
 " #####################################################################
@@ -53,24 +46,34 @@ set shiftwidth=2  " Number of spaces to use for each step of (auto)indent.  Used
 set softtabstop=2 " Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>.
 set expandtab     " tabs are spaces
 set autoindent    " new lines are indented the same as the previous line
-
 set isk-=.        " add . as word boundary
+
+" #####################################################################
+" set behaviours of python
+" #####################################################################
+" autocmd BufNewFile,BufRead *.py
+"     \ setlocal tabstop=4
+"     \ setlocal softtabstop=4
+"     \ setlocal shiftwidth=4
+"     \ setlocal textwidth=80
+"     \ setlocal smarttab
+"     \ setlocal expandtab
 
 " #####################################################################
 " simple maps
 " #####################################################################
-"
+
 " toggle hls
 nnoremap <leader>h :nohlsearch<CR>
 
 " toggle list hidden chars
-nnoremap <leader>l :set list!<CR>:set list?<cr>
+" nnoremap <leader>l :set list!<CR>:set list?<cr>
 
 " toggle paste
 nnoremap <leader>p :set paste!<CR>:set paste?<CR>
 
-" toggle paste
-nnoremap <leader>w :set wrap!<CR>:set wrap?<CR>
+" " toggle paste
+" nnoremap <leader>w :set wrap!<CR>:set wrap?<CR>
 
 " add better pane navigation
 nnoremap <C-h> <C-w>h
@@ -83,18 +86,18 @@ cnoremap <c-h> <left>
 cnoremap <c-j> <down>
 cnoremap <c-k> <up>
 cnoremap <c-l> <right>
-cnoremap ^     <home>
-cnoremap $     <end>
+" cnoremap ^     <home>
+" cnoremap $     <end>
 
-" close current window
-nnoremap <leader>k :close<CR>
+" " close current window
+" nnoremap <leader>k :close<CR>
 
 " split
-noremap <leader>vs :vsp<cr><c-^><c-w>p
-noremap <leader>sp :rightbelow vsplit #<cr>
+" noremap <leader>vs :vsp<cr><c-^><c-w>p
+" noremap <leader>sp :rightbelow vsplit #<cr>
 
-" set up a line text object
-vnoremap il :<c-u>silent! normal! ^v$g_<cr>
+" " set up a line text object
+" vnoremap il :<c-u>silent! normal! ^v$g_<cr>
 
 " Quickly edit/source the vimrc file
 nnoremap <leader>ec :e $MYVIMRC<CR>
@@ -109,13 +112,13 @@ if bufwinnr(1)
 endif
 
 " search current highlight
-xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR> 
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 
 function! s:VSetSearch()
     let temp = @s
     norm! gv"sy
-    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g') 
+    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
     let @s = temp
 endfunction
 
@@ -139,12 +142,14 @@ function! s:SetNumber()
     endif
 endfunction
 
-" ctag locations
-set tags=./.tags,.tags,./tags,tags
+" " ctag locations
+" set tags=./.tags,.tags,./tags,tags
 
 " #####################################################################
 " Turn on colors
 " #####################################################################
+let python_hightlight_all=1
+
 syntax on
 
 colorscheme solarized
@@ -160,11 +165,18 @@ function! ToggleBackground()
     endif
 endfunction
 
+" #####################################################################
+" hidden characters
+" #####################################################################
+highlight ExtraWhitespace ctermbg=red guibg=red
+
+match ExtraWhitespace /\s\+$\|\t/
+
 
 " #####################################################################
 " NERDTree
 " #####################################################################
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 
 let NERDTreeWinPos="left"
 let NERDTreeWinSize=36
@@ -185,6 +197,28 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " #####################################################################
 let g:airline_theme='bubblegum'
 
+" #####################################################################
+" ctrl-p
+" #####################################################################
+" let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
+" let g:ctrlp_custom_ignore = {
+"             \ 'dir':  '\v[\/](\.git|\.hg|\.svn|target|www)$',
+"             \ 'file' : '\v\.(class)$',
+"             \}
+
+let g:ctrlp_working_path_mode = 'rc'
+
+" #####################################################################
+" tmuxline
+" #####################################################################
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '>',
+    \ 'right' : '',
+    \ 'right_alt' : '<',
+    \ 'space' : ' '}
+
 
 " #####################################################################
 " make better cursor shapes
@@ -198,60 +232,12 @@ else
 endif
 
 
-" #####################################################################
-" Neocomplcache
-" #####################################################################
-let g:neocomplcache_enable_at_startup = 1
-
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-
-" #####################################################################
-" ctrl-p
-" #####################################################################
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|target|www)$',
-            \ 'file' : '\v\.(class)$',
-            \}
-
-let g:ctrlp_working_path_mode = 'rc'
+" " #####################################################################
+" " YouCompleteMe
+" " #####################################################################
+" " make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:ycm_autoclose_preview_window_after_completion=1
 
 
-" #####################################################################
-" tmuxline
-" #####################################################################
-let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '>',
-    \ 'right' : '',
-    \ 'right_alt' : '<',
-    \ 'space' : ' '}
-
-" #####################################################################
-" EasyAlign
-" #####################################################################
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-
-" #####################################################################
-" YouCompleteMe
-" #####################################################################
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-
-" #####################################################################
-" UltiSnipsExpandTrigger
-" #####################################################################
-let g:UltiSnipsExpandTrigger = "<tab>"
-
-
-" #####################################################################
-" UltiSnipsExpandTrigger
-" #####################################################################
-let g:typescript_indent_disable = 1

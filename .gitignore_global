@@ -3,3 +3,5 @@
 **/tags
 .tmuxp.yaml
 pyvenv.cfg
+lib/
+bin/

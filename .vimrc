@@ -67,7 +67,7 @@ set isk-=.        " add . as word boundary
 nnoremap <leader>h :nohlsearch<CR>
 
 " toggle list hidden chars
-" nnoremap <leader>l :set list!<CR>:set list?<cr>
+nnoremap <leader>l :set list!<CR>:set list?<cr>
 
 " toggle paste
 nnoremap <leader>p :set paste!<CR>:set paste?<CR>
@@ -96,8 +96,8 @@ cnoremap <c-l> <right>
 " noremap <leader>vs :vsp<cr><c-^><c-w>p
 " noremap <leader>sp :rightbelow vsplit #<cr>
 
-" " set up a line text object
-" vnoremap il :<c-u>silent! normal! ^v$g_<cr>
+" set up a line text object
+vnoremap il :<c-u>silent! normal! ^v$g_<cr>
 
 " Quickly edit/source the vimrc file
 nnoremap <leader>ec :e $MYVIMRC<CR>
@@ -168,9 +168,9 @@ endfunction
 " #####################################################################
 " hidden characters
 " #####################################################################
-highlight ExtraWhitespace ctermbg=red guibg=red
+" highlight ExtraWhitespace ctermbg=red guibg=red
 
-match ExtraWhitespace /\s\+$\|\t/
+" match ExtraWhitespace /\s\+$\|\t/
 
 
 " #####################################################################

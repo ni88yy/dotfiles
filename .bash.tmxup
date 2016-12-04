@@ -1,0 +1,12 @@
+#! /bin/bash
+
+tmuxp-freeze () {
+    tmuxp freeze `tmux display-message -p "#S"` <<HERE
+yaml
+y
+.tmuxp.yaml
+.tmuxp.yaml
+y
+HERE
+}
+

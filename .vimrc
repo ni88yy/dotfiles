@@ -73,7 +73,7 @@ nnoremap <leader>l :set list!<CR>:set list?<cr>
 nnoremap <leader>p :set paste!<CR>:set paste?<CR>
 
 " " toggle paste
-" nnoremap <leader>w :set wrap!<CR>:set wrap?<CR>
+nnoremap <leader>w :set wrap!<CR>:set wrap?<CR>
 
 " add better pane navigation
 nnoremap <C-h> <C-w>h
@@ -168,8 +168,7 @@ endfunction
 " #####################################################################
 " hidden characters
 " #####################################################################
-" highlight ExtraWhitespace ctermbg=red guibg=red
-
+" highlight ExtraWhitespace ctermbg=gray guibg=gray
 " match ExtraWhitespace /\s\+$\|\t/
 
 

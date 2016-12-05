@@ -11,7 +11,7 @@ import sun.nio.fs._
 // set up the user and current directory
 val homeDirPath = Paths.get(props("user.home"))
 val currDirPath = Paths.get(props("user.dir"))
-val excludeFiles = Set("README.md", "sync.sh", "sync2.sh", ".git", ".DS_Store")
+val excludeFiles = Set("README.md", "sync.sh", "sync2.sh", ".git", ".DS_Store", ".tmuxp.yaml")
 
 // get the dotFiles directory
 require(args.length == 0 || args.length == 1, "not correct number of args")

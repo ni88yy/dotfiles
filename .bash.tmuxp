@@ -1,0 +1,11 @@
+#! /bin/bash
+
+tmuxp-freeze() {
+tmuxp freeze `` <<HERE
+yaml
+y
+.tmuxp
+.tmuxp
+y
+HERE
+}

@@ -4,6 +4,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+
+" required
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -13,13 +15,16 @@ Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 
+" presentation stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'baskerville/bubblegum'
 Plug 'altercation/vim-colors-solarized'
 Plug 'edkolev/tmuxline.vim'
 
+" more stuff
 Plug 'Valloric/YouCompleteMe' " http://tilvim.com/2013/08/21/js-autocomplete.html
+Plug 'nvie/vim-flake8'
 call plug#end()
 
 " #####################################################################
@@ -51,13 +56,13 @@ set isk-=.        " add . as word boundary
 " #####################################################################
 " set behaviours of python
 " #####################################################################
-autocmd BufNewFile,BufRead *.py
-    \ setlocal tabstop=4
-    \ setlocal softtabstop=4
-    \ setlocal shiftwidth=4
-    \ setlocal textwidth=80
-    \ setlocal smarttab
-    \ setlocal expandtab
+" autocmd BufNewFile,BufRead *.py
+"     \ setlocal tabstop=4
+"     \ setlocal softtabstop=4
+"     \ setlocal shiftwidth=4
+"     \ setlocal textwidth=80
+"     \ setlocal smarttab
+"     \ setlocal expandtab
 
 " #####################################################################
 " simple maps
@@ -240,3 +245,23 @@ endif
 let g:ycm_autoclose_preview_window_after_completion=1
 
 
+
+" #####################################################################
+" flake8
+" #####################################################################
+autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+autocmd BufWritePost *.py call Flake8()
+let g:flake8_show_in_gutter=1  " show
+let g:flake8_show_in_file=1  " show
+
+" flake8_error_marker='EE'     " set error marker to 'EE'
+" flake8_warning_marker='WW'   " set warning marker to 'WW'
+" flake8_pyflake_marker=''     " disable PyFlakes warnings
+" flake8_complexity_marker=''  " disable McCabe complexity warnings
+" flake8_naming_marker=''      " disable naming warnings
+
+highlight link Flake8_Error      Error
+highlight link Flake8_Warning    WarningMsg
+highlight link Flake8_Complexity WarningMsg
+highlight link Flake8_Naming     WarningMsg
+highlight link Flake8_PyFlake    WarningMsg

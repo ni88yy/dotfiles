@@ -98,8 +98,8 @@ cnoremap <c-l> <right>
 " nnoremap <leader>k :close<CR>
 
 " split
-" noremap <leader>vs :vsp<cr><c-^><c-w>p
-" noremap <leader>sp :rightbelow vsplit #<cr>
+noremap <leader>vs :vsp<cr><c-^><c-w>p
+noremap <leader>sp :rightbelow vsplit #<cr>
 
 " set up a line text object
 vnoremap il :<c-u>silent! normal! ^v$g_<cr>

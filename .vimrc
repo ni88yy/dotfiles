@@ -45,6 +45,7 @@ set wildmenu      " turn on enhanced auto complete
 set hidden        " put modified buffers in background
 set noswf         " turn off swap files for now, it gets annoying when continuous compilation compiles swap files
 set list
+set listchars=tab:>-,trail:-
 
 " Dealing with tabs
 set tabstop=2     " Number of spaces that a <Tab> in the file counts for.

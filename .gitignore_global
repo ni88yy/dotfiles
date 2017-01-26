@@ -5,3 +5,7 @@
 pyvenv.cfg
 lib/
 bin/
+.Python
+pip-selfcheck.json
+include/
+share/

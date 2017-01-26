@@ -1,9 +1,12 @@
+--python-kinds=-iv
 --recurse=yes
 --exclude=.git
 --exclude=vendor/*
 --exclude=node_modules/*
 --exclude=db/*
 --exclude=log/*
+--exclude=build
+--exclude=dist
 
 
 --langdef=scala

@@ -250,9 +250,9 @@ let g:ycm_autoclose_preview_window_after_completion=1
 " #####################################################################
 " flake8
 " #####################################################################
-autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+" autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 autocmd BufWritePost *.py call Flake8()
-autocmd BufNewFile,BufRead *.py call Flake8()
+" autocmd BufNewFile,BufRead *.py call Flake8()
 let g:flake8_show_in_gutter=1  " show
 let g:flake8_show_in_file=1  " show
 

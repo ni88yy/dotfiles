@@ -1,14 +1,17 @@
 #! /bin/bash
 
+# stop/remove all containers
 docker-clean () {
     docker stop `docker ps --format "{{.Names}}"`
     docker rm `docker ps -a --format "{{.ID}}"`
 }
 
+# remove orphaned images
 docker-clean-i() {
     docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 }
 
+# remove all images
 docker-clean-iall() {
     docker rmi $(docker images | awk "{print $3}")
 }
@@ -22,5 +25,5 @@ _cli_bash_autocomplete() {
      COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
      return 0
  }
-  
- complete -F _cli_bash_autocomplete docker-machine
+
+complete -F _cli_bash_autocomplete docker-machine

@@ -1,3 +1,3 @@
 export EDITOR='vim'
 export SBT_OPTS=-XX:MaxPermSize=512m
-export PS1='\e[0;32m[\u] \w\e[m \n\$ '
+export PS1='\e[0;32m[\h] \w\e[m \n\$ '

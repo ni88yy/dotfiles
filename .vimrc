@@ -70,6 +70,9 @@ set isk-=.        " add . as word boundary
 " simple maps
 " #####################################################################
 
+nnoremap n nzz
+nnoremap N Nzz
+
 " toggle hls
 nnoremap <leader>h :nohlsearch<CR>
 
@@ -151,6 +154,20 @@ endfunction
 
 " " ctag locations
 " set tags=./.tags,.tags,./tags,tags
+
+nnoremap <leader>q :call QuickfixToggle()<cr>
+
+let g:quickfix_is_open = 0
+
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+    else
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
 
 " #####################################################################
 " Turn on colors
@@ -254,8 +271,8 @@ let g:ycm_autoclose_preview_window_after_completion=1
 " autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 autocmd BufWritePost *.py call Flake8()
 " autocmd BufNewFile,BufRead *.py call Flake8()
-let g:flake8_show_in_gutter=1  " show
-let g:flake8_show_in_file=1  " show
+let g:flake8_show_in_gutter=0  " show
+let g:flake8_show_in_file=0  " show
 
 " flake8_error_marker='EE'     " set error marker to 'EE'
 " flake8_warning_marker='WW'   " set warning marker to 'WW'

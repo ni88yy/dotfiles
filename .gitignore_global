@@ -3,6 +3,7 @@
 **/tags
 .tmuxp.yaml
 pyvenv.cfg
+lib/
 bin/
 .Python
 pip-selfcheck.json
@@ -10,3 +11,4 @@ include/
 share/
 python3.5/
 __pycache__/
+.ipynb_checkpoints/

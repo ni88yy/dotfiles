@@ -1,6 +1,5 @@
-*~
-**/.DS_Store
-**/tags
+.DS_Store
+tags
 .tmuxp.yaml
 pyvenv.cfg
 lib/
@@ -10,5 +9,11 @@ pip-selfcheck.json
 include/
 share/
 python3.5/
+etc/
+share/
+include/
+.Python
+pip-selfcheck.json
+ipynb_checkpoints/
 __pycache__/
 .ipynb_checkpoints/

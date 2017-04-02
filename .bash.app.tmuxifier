@@ -1,3 +1,0 @@
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-eval "$(tmuxifier init -)"
-source "$HOME/.tmuxifier/completion/tmuxifier.bash"

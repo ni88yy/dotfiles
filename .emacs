@@ -14,7 +14,7 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(package-selected-packages
    (quote
-    (resize-window find-file-in-project neotree magit evil-leader evil-visual-mark-mode))))
+    (evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree magit evil-leader evil-visual-mark-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -84,3 +84,12 @@
 (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
+
+(require 'evil-visualstar)
+(global-evil-visualstar-mode)

@@ -17,7 +17,7 @@
  '(custom-enabled-themes (quote (misterioso)))
  '(package-selected-packages
    (quote
-    (evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree magit evil-leader evil-visual-mark-mode))))
+    (jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree magit evil-leader evil-visual-mark-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,6 +37,16 @@
 (setq auto-save-file-name-transforms
                 `((".*" ,temporary-file-directory t)))
 (scroll-bar-mode -1)
+
+; (setq inhibit-startup-message t) ;; hide the startup message
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; python
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(elpy-enable)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; neo tree

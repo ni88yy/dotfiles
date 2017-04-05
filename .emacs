@@ -14,10 +14,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (misterioso)))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(custom-enabled-themes (quote (tango-dark)))
  '(package-selected-packages
    (quote
-    (jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree magit evil-leader evil-visual-mark-mode))))
+    (magit evil-commentary jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree evil-leader evil-visual-mark-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -28,24 +30,26 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; basic defaults
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq show-trailing-whitespace t)
 (set-default 'truncate-lines t)
+(setq-default show-trailing-whitespace t)
 (global-linum-mode 1)
 (setq vc-follow-symlinks t)
-(setq backup-directory-alist
-                `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-                `((".*" ,temporary-file-directory t)))
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (scroll-bar-mode -1)
-
-; (setq inhibit-startup-message t) ;; hide the startup message
-
-
+(global-hl-line-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (elpy-enable)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ido
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'ido)
+(ido-mode 1)
+(setq ido-show-dot-for-dired 1)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -89,11 +93,11 @@
   "n" 'linum-mode
   "v" 'split-window-horizontally
   "h" 'split-window-vertically
-  "g" 'magit-status
-  "G" 'magit-dispatch-popup
   "r" 'resize-window
+  "f" 'find-file
   "tt" 'neotree-toggle
   "tf" 'neotree-project-dir
+  "ms" 'magit-status
 )
 
 
@@ -115,3 +119,5 @@
 
 (require 'evil-visualstar)
 (global-evil-visualstar-mode)
+
+(evil-commentary-mode)

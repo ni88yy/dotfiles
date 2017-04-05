@@ -19,7 +19,7 @@ shopt -s histappend;
 shopt -s cdspell;
 
 # vi on the command line
-set -o vi
+# set -o vi
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`

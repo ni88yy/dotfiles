@@ -16,10 +16,10 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-enabled-themes (quote (misterioso)))
  '(package-selected-packages
    (quote
-    (magit evil-commentary jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree evil-leader evil-visual-mark-mode))))
+    (evil-terminal-cursor-changer nodejs-repl ag magit evil-commentary jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree evil-leader evil-visual-mark-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -31,13 +31,21 @@
 ;; basic defaults
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (set-default 'truncate-lines t)
-(setq-default show-trailing-whitespace t)
+
 (global-linum-mode 1)
+(setq linum-format "%d ")
+
 (setq vc-follow-symlinks t)
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-(scroll-bar-mode -1)
-(global-hl-line-mode 1)
+;; (scroll-bar-mode -1)
+;; (global-hl-line-mode 1)
+
+(defun nolinum ()
+  (global-hl-line-mode 0)
+  (global-linum-mode 0)
+)
+(add-hook 'term-mode-hook 'nolinum)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python
@@ -97,7 +105,7 @@
   "f" 'find-file
   "tt" 'neotree-toggle
   "tf" 'neotree-project-dir
-  "ms" 'magit-status
+  "g" 'magit-status
 )
 
 
@@ -121,3 +129,11 @@
 (global-evil-visualstar-mode)
 
 (evil-commentary-mode)
+
+(setq evil-insert-state-cursor 'bar
+      evil-normal-state-cursor 'box)
+
+(unless (display-graphic-p)
+    (require 'evil-terminal-cursor-changer)
+    (evil-terminal-cursor-changer-activate) ; or (etcc-on)
+)

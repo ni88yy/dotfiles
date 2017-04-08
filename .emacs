@@ -16,7 +16,7 @@
  '(custom-enabled-themes (quote (misterioso)))
  '(package-selected-packages
    (quote
-    (fiplr evil-terminal-cursor-changer nodejs-repl ag magit evil-commentary jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree evil-leader evil-visual-mark-mode))))
+    (evil-magit fill-column-indicator flx-ido ein fiplr evil-terminal-cursor-changer nodejs-repl ag magit evil-commentary jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree evil-leader evil-visual-mark-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -36,7 +36,7 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 ;; (scroll-bar-mode -1)
-;; (global-hl-line-mode 1)
+(global-hl-line-mode 1)
 
 (defun nolinum ()
   (global-hl-line-mode 0)
@@ -48,6 +48,13 @@
 ;; python
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (elpy-enable)
+(elpy-use-ipython)
+(setq gud-pdb-command-name "python -m pdb ")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; vertical rule at 80 col
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'fill-column-indicator)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ido
@@ -102,7 +109,7 @@
   "g" 'magit-status
   "tt" 'neotree-toggle
   "tf" 'neotree-project-dir
-  "ft" 'fiplr-find-file
+  "fa" 'fiplr-find-file
   "ff" 'find-file
   "fl" 'find-file-at-point
 )
@@ -137,6 +144,7 @@
     (evil-terminal-cursor-changer-activate) ; or (etcc-on)
 )
 
+(require 'evil-magit)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; find file at point

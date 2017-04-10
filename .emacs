@@ -45,7 +45,7 @@
 (require 'ein)
 (elpy-enable)
 (elpy-use-ipython)
-(setq gud-pdb-command-name "python -m pdb ")
+(setq python-shell-interpreter "ipython3" python-shell-interpreter-args "--simple-prompt --pprint")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; vertical rule at 80 col
@@ -115,6 +115,7 @@
 (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "o") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "x") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-refresh)
 (evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)

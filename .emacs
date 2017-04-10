@@ -16,7 +16,7 @@
  '(custom-enabled-themes (quote (misterioso)))
  '(package-selected-packages
    (quote
-    (evil-magit fill-column-indicator flx-ido ein fiplr evil-terminal-cursor-changer nodejs-repl ag magit evil-commentary jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree evil-leader evil-visual-mark-mode))))
+    (## fzf markdown-mode evil-magit fill-column-indicator flx-ido ein fiplr evil-terminal-cursor-changer nodejs-repl ag magit evil-commentary jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree evil-leader evil-visual-mark-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,16 +37,12 @@
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 ;; (scroll-bar-mode -1)
 (global-hl-line-mode 1)
-
-(defun nolinum ()
-  (global-hl-line-mode 0)
-  (global-linum-mode 0)
-)
-(add-hook 'term-mode-hook 'nolinum)
+(menu-bar-mode -1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'ein)
 (elpy-enable)
 (elpy-use-ipython)
 (setq gud-pdb-command-name "python -m pdb ")
@@ -99,19 +95,18 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
 (evil-leader/set-key
-  "e" 'find-file
   "b" 'switch-to-buffer
   "k" 'kill-buffer
   "n" 'linum-mode
   "v" 'split-window-horizontally
   "h" 'split-window-vertically
   "r" 'resize-window
-  "g" 'magit-status
+  "m" 'magit-status
   "tt" 'neotree-toggle
   "tf" 'neotree-project-dir
-  "fa" 'fiplr-find-file
-  "ff" 'find-file
-  "fl" 'find-file-at-point
+  "f" 'find-file
+  "gf" 'fiplr-find-file
+  "gl" 'find-file-at-point
 )
 
 

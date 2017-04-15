@@ -15,8 +15,30 @@
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (misterioso)))
  '(package-selected-packages
-   (quote
-    (## fzf markdown-mode evil-magit fill-column-indicator flx-ido ein fiplr evil-terminal-cursor-changer nodejs-repl ag magit evil-commentary jedi elpy evil-matchit evil-visualstar evil-surround resize-window find-file-in-project neotree evil-leader evil-visual-mark-mode))))
+   (quote (
+     ag
+     ein
+     elpy
+     evil-commentary
+     evil-leader
+     evil-magit
+     evil-matchit
+     evil-surround
+     evil-terminal-cursor-changer
+     evil-visual-mark-mode
+     evil-visualstar
+     fill-column-indicator
+     find-file-in-project
+     fiplr
+     flx-ido
+     fzf
+     jedi
+     magit
+     markdown-mode
+     neotree
+     nodejs-repl
+     resize-window
+     ))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -88,7 +110,6 @@
      (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
      (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
      (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-     (define-key evil-normal-state-map (kbd "q") 'delete-window)
   )
 )
 
@@ -107,6 +128,7 @@
   "f" 'find-file
   "gf" 'fiplr-find-file
   "gl" 'find-file-at-point
+  "q"  'delete-window
 )
 
 

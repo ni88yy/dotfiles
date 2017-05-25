@@ -12,3 +12,5 @@ function cd() {
     fi;
     builtin cd "${new_directory}" && ls
 }
+
+alias pyv='virtualenv . -p python3; source bin/activate'

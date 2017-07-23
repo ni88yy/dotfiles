@@ -17,3 +17,5 @@ pip-selfcheck.json
 ipynb_checkpoints/
 __pycache__/
 .ipynb_checkpoints/
+.cache/
+.mypy_cache

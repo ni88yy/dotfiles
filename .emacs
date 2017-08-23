@@ -42,8 +42,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fonts
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(set-frame-font "Monospace-18")
-(add-to-list 'default-frame-alist '(font . "Monospace-18"))
+(set-frame-font "Monospace-14")
+(add-to-list 'default-frame-alist '(font . "Monospace-14"))
 (defun small-fonts ()
   "Small fonts"
   (interactive)

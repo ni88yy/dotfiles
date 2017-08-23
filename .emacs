@@ -14,7 +14,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
- '(custom-enabled-themes (quote (misterioso)))
+ '(custom-enabled-themes (quote (leuven)))
  '(custom-safe-themes
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))

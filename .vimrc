@@ -35,8 +35,8 @@ call plug#end()
 let mapleader=','
 let maplocalleader=',,'
 set cursorline     " highlights the current line
-set number         " always show line numbers
-set relativenumber
+" set number         " always show line numbers
+" set relativenumber
 set nowrap         " turn off the line wrapping
 set noswf          " turn off swap files for now, it gets annoying when continuous compilation compiles swap files
 set hls            " turn on search highlighting

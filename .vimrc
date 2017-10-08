@@ -6,6 +6,8 @@ endif
 call plug#begin()
 
 " required
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'

@@ -206,7 +206,7 @@ endfunction
 
 let NERDTreeWinPos="left"
 let NERDTreeWinSize=36
-let NERDTreeIgnore=['target[[dir]]']
+let NERDTreeIgnore=['__pycache__', 'target[[dir]]']
 let NERDTreeShowHidden=0
 
 " set up some nerd tree bindings

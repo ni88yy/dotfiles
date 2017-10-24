@@ -9,6 +9,7 @@ call plug#begin()
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'

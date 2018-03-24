@@ -1,0 +1,22 @@
+function pve_inner {
+python3.6 - <<END
+import os
+import re
+from pathlib import Path
+path_base = 'dev'
+venv_base = 'dev/venvs'
+venv_path = re.sub(path_base, venv_base, os.getcwd())
+venv_dir = Path(venv_path)
+script = venv_path + '/bin/activate'
+if not venv_dir.is_dir():
+    print(f'python3.6 -m venv {venv_path}')
+else:
+    print(f'source {script}')
+END
+}
+
+function pve() {
+  # Call it
+  $(pve_inner)
+  $(pve_inner)
+}

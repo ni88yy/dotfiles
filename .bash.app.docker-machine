@@ -1,5 +1,3 @@
-#! /bin/bash
-
 # stop/remove all containers
 docker-clean () {
     docker stop `docker ps --format "{{.Names}}"`

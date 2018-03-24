@@ -4,7 +4,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH;
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.bash.*; do
+for file in ~/.bash\.*; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -19,7 +19,7 @@ shopt -s histappend;
 shopt -s cdspell;
 
 # vi on the command line
-# set -o vi
+set -o vi
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`

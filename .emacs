@@ -16,7 +16,7 @@
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
- '(custom-enabled-themes (quote (leuven)))
+ '(custom-enabled-themes nil)
  '(custom-safe-themes
    (quote
     ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
@@ -52,46 +52,42 @@
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3"))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; magitj
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'evil-magit)
+(setq magit-display-buffer-function
+      (lambda (buffer)
+        (display-buffer buffer '(display-buffer-same-window))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; basic defaults
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'evil-magit)
 (set-default 'truncate-lines t)
 (menu-bar-mode -1)
 (global-hl-line-mode 1)
+(modify-syntax-entry ?_ "w")
 ;(global-linum-mode 1)
 ;(setq linum-format "%d ")
-;(setq vc-follow-symlinks t)
-;(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-;(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-
-;;; (modify-syntax-entry ?_ "w")
-
-;;; Easier window switching
-;(windmove-default-keybindings 'super)
-;(setq-default c-basic-offset 4)
+(setq vc-follow-symlinks t)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; fonts
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(set-frame-font "Monospace-14")
-;(add-to-list 'default-frame-alist '(font . "Monospace-14"))
-;(defun small-fonts ()
-;  "Small fonts"
-;  (interactive)
-;  (set-frame-font "Monospace-14"))
-;(defun large-fonts ()
-;  "Large fonts"
-;  (interactive)
-;  (set-frame-font "Monospace-18"))
-;(defun super-large-fonts ()
-;  "Super large fonts"
-;  (interactive)
-;  (set-frame-font "Monospace-25"))
-;(global-set-key [f5] 'small-fonts)
-;(global-set-key [f6] 'large-fonts)
-;(global-set-key [f7] 'super-large-fonts)
+; copy/paste to pbpaste (osx)  
+; http://iancmacdonald.com/macos/emacs/tmux/2017/01/15/macOS-tmux-emacs-copy-past.html
+(defun copy-from-osx ()
+  "Use OSX clipboard to paste."
+  (shell-command-to-string "pbpaste"))
+
+(defun paste-to-osx (text &optional push)
+  "Add kill ring entries (TEXT) to OSX clipboard.  PUSH."
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
+
+(setq interprogram-cut-function 'paste-to-osx)
+(setq interprogram-paste-function 'copy-from-osx)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; autocomplete
@@ -103,6 +99,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-flycheck-mode t)
 (add-hook 'python-mode-hook 'flycheck-mode)
+;(flycheck-python-pycompile-executable "python3")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; ido
@@ -112,8 +109,10 @@
 ;(setq ido-show-dot-for-dired 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; backup-directory
+;; backup-directory and autosave
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" , temporary-file-directory t)))
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
   backup-by-copying t    ; Don't delink hardlinks
   version-control t      ; Use version numbers on backups
@@ -163,7 +162,6 @@
 
 (require 'evil-visualstar)
 (global-evil-visualstar-mode)
-(modify-syntax-entry ?_ "w")
 
 (evil-commentary-mode)
 
@@ -175,33 +173,6 @@
     (evil-terminal-cursor-changer-activate) ; or (etcc-on)
 )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; neo tree
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(require 'neotree)
-
-;(defun neotree-project-dir ()
-;    "Open NeoTree using the git root."
-;    (interactive)
-;    (let ((project-dir (ffip-project-root))
-;      (file-name (buffer-file-name)))
-;  (if project-dir
-;      (progn
-;      (neotree-dir project-dir)
-;      (neotree-find file-name))
-;  (message "Could not find git project root."))))
-
-;(setq neo-smart-open t)
-;(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-;(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
-;(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-;(evil-define-key 'normal neotree-mode-map (kbd "o") 'neotree-enter)
-;(evil-define-key 'normal neotree-mode-map (kbd "x") 'neotree-enter)
-;(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-;(evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-refresh)
-;(evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)
-;(evil-define-key 'normal neotree-mode-map (kbd "m") 'neotree-rename-node)
-;(evil-define-key 'normal neotree-mode-map (kbd "h") 'neotree-hidden-file-toggle)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; more custom

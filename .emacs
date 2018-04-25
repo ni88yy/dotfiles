@@ -26,7 +26,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (zenburn-theme ag evil-magit projectile auto-complete neotree flycheck evil-commentary evil-leader evil-matchit evil-surround evil-terminal-cursor-changer evil-visual-mark-mode evil-visualstar magit resize-window)))
+    (markdown-mode highlight-leading-spaces zenburn-theme ag evil-magit projectile auto-complete neotree flycheck evil-commentary evil-leader evil-matchit evil-surround evil-terminal-cursor-changer evil-visual-mark-mode evil-visualstar magit resize-window)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(show-paren-mode t)
  '(vc-annotate-background "#2B2B2B")
@@ -66,6 +66,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (set-default 'truncate-lines t)
 (menu-bar-mode -1)
+(tool-bar-mode -1)
 (global-hl-line-mode 1)
 (modify-syntax-entry ?_ "w")
 ;(global-linum-mode 1)

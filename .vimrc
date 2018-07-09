@@ -173,14 +173,14 @@ function! QuickfixToggle()
     endif
 endfunction
 
-" #####################################################################
-" Turn on colors
-" #####################################################################
-let python_hightlight_all=1
+" " #####################################################################
+" " Turn on colors
+" " #####################################################################
+" let python_hightlight_all=1
 
-syntax on
+" syntax on
 
-colorscheme solarized
+" colorscheme solarized
 
 " toggle bacground between dark and light
 nnoremap <leader>b :call ToggleBackground()<cr>

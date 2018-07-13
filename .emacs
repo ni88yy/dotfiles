@@ -16,7 +16,7 @@
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
- '(custom-enabled-themes nil)
+ '(custom-enabled-themes (quote (adwaita)))
  '(custom-safe-themes
    (quote
     ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
@@ -54,7 +54,17 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; magitj
+;; whitespace
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'whitespace)
+(global-whitespace-mode t)
+(setq whitespace-style (quote (face tabs newline tab-mark trailing)))
+;; (setq whitespace-style '(tabs trailing))
+;; (setq whitespace-newline 'underline)
+;; (setq whitespace-style '(face lines-tail))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; magit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'evil-magit)
 (setq magit-display-buffer-function
@@ -72,6 +82,11 @@
 ;(global-linum-mode 1)
 ;(setq linum-format "%d ")
 (setq vc-follow-symlinks t)
+; (global-font-lock-mode t)
+
+;; tabs
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
 
 
 ;; ; copy/paste to pbpaste (osx)  

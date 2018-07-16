@@ -1,5 +1,5 @@
 function pve_inner {
-python3.6 - <<END
+python3 - <<END
 import os
 import re
 from pathlib import Path
@@ -9,7 +9,7 @@ venv_path = re.sub(path_base, venv_base, os.getcwd())
 venv_dir = Path(venv_path)
 script = venv_path + '/bin/activate'
 if not venv_dir.is_dir():
-    print(f'python3.6 -m venv {venv_path}')
+    print(f'python3 -m venv {venv_path}')
 else:
     print(f'source {script}')
 END

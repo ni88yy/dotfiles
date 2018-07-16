@@ -3,12 +3,12 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-alias ls='ls -lhFG'
+alias ll='ls -lhFG'
 
 function cd() {
     new_directory="$*";
     if [ $# -eq 0 ]; then 
         new_directory=${HOME};
     fi;
-    builtin cd "${new_directory}" && ls
+    builtin cd "${new_directory}" && ll
 }

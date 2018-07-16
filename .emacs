@@ -26,7 +26,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (markdown-mode highlight-leading-spaces zenburn-theme ag evil-magit projectile auto-complete neotree flycheck evil-commentary evil-leader evil-matchit evil-surround evil-terminal-cursor-changer evil-visual-mark-mode evil-visualstar magit resize-window)))
+    (groovy-mode markdown-mode highlight-leading-spaces zenburn-theme ag evil-magit projectile auto-complete neotree flycheck evil-commentary evil-leader evil-matchit evil-surround evil-terminal-cursor-changer evil-visual-mark-mode evil-visualstar magit resize-window)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(show-paren-mode t)
  '(vc-annotate-background "#2B2B2B")
@@ -109,14 +109,14 @@
 ;;   "Use OSX clipboard to paste."
 ;;   (shell-command-to-string "reattach-to-user-namespace pbpaste"))
 
-(defun paste-to-osx (text &optional push)
-  "Add kill ring entries (TEXT) to OSX clipboard.  PUSH."
-  (let ((process-connection-type nil))
-    (let ((proc (start-process "pbcopy" "*Messages*" "reattach-to-user-namespace" "pbcopy")))
-      (process-send-string proc text)
-      (process-send-eof proc))))
+; (defun paste-to-osx (text &optional push)
+;   "Add kill ring entries (TEXT) to OSX clipboard.  PUSH."
+;   (let ((process-connection-type nil))
+;     (let ((proc (start-process "pbcopy" "*Messages*" "reattach-to-user-namespace" "pbcopy")))
+;       (process-send-string proc text)
+;       (process-send-eof proc))))
 
-(setq interprogram-cut-function 'paste-to-osx)
+; (setq interprogram-cut-function 'paste-to-osx)
 ;; (setq interprogram-paste-function 'copy-from-osx)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; autocomplete
@@ -153,6 +153,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq evil-want-C-u-scroll t)
 (require 'evil)
 (evil-mode t)
 

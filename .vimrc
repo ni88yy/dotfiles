@@ -27,7 +27,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'edkolev/tmuxline.vim'
 
 " more stuff
-Plug 'Valloric/YouCompleteMe' " http://tilvim.com/2013/08/21/js-autocomplete.html
+" Plug 'Valloric/YouCompleteMe' " http://tilvim.com/2013/08/21/js-autocomplete.html
 Plug 'nvie/vim-flake8'
 call plug#end()
 

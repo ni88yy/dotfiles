@@ -156,6 +156,8 @@
 (setq evil-want-C-u-scroll t)
 (require 'evil)
 (evil-mode t)
+(evil-select-search-module 'evil-search-module 'evil-search)
+(setq-default evil-search-module 'evil-search)
 
 (eval-after-load "evil"
   '(progn

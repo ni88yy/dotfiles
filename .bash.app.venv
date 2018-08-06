@@ -7,16 +7,17 @@ path_base = 'dev'
 venv_base = 'dev/venvs'
 venv_path = re.sub(path_base, venv_base, os.getcwd())
 venv_dir = Path(venv_path)
-script = venv_path + '/bin/activate'
 if not venv_dir.is_dir():
-    print(f'python3 -m venv {venv_path}')
+    print(f'$1 -m venv {venv_path}')
 else:
+    script = venv_path + '/bin/activate'
     print(f'source {script}')
 END
 }
 
 function pve {
   # Call it
-  $(pve_inner)
+  ARG1=${1:-python3}
+  $(pve_inner $ARG1)
   $(pve_inner)
 }

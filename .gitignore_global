@@ -20,3 +20,6 @@ __pycache__/
 .mypy_cache
 .python-version
 .env
+.ipynb_checkpoints/
+cache/
+*.egg-info/

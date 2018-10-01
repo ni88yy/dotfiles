@@ -18,4 +18,4 @@
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [core]
-	excludesfile = /Users/sayreblades/.gitignore_global
+	excludesfile = ~/.gitignore_global

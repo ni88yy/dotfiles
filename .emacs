@@ -17,10 +17,10 @@
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
- '(custom-enabled-themes nil)
+ '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
-    ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+    ("190a9882bef28d7e944aa610aa68fe1ee34ecea6127239178c7ac848754992df" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(fci-rule-color "#383838")
  '(nrepl-message-colors
    (quote
@@ -78,7 +78,7 @@
 (set-default 'truncate-lines t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(global-hl-line-mode 1)
+;; (global-hl-line-mode 1)
 (modify-syntax-entry ?_ "w")
 ;(global-linum-mode 1)
 ;(setq linum-format "%d ")

@@ -54,3 +54,11 @@ then
     ln -sf $SSH_AUTH_SOCK $SOCK
     export SSH_AUTH_SOCK=$SOCK
 fi
+
+
+# emacs shell in osx term
+if [ -z "$(type -t update_terminal_cwd)" ] || [ "$(type -t update_terminal_cwd)" != "function" ]; then
+  update_terminal_cwd() {
+    true
+  }
+fi

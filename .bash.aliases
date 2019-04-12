@@ -4,6 +4,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 alias ll='ls -lhFG'
+alias chrome="open -a 'Google Chrome'"
+alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 
 function cd() {
     new_directory="$*";
@@ -12,3 +14,4 @@ function cd() {
     fi;
     builtin cd "${new_directory}" && ll
 }
+

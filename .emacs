@@ -1,11 +1,14 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
 (require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
-(setq package-enable-at-startup nil)
+;(setq package-enable-at-startup nil)
 (package-initialize)
-(package-refresh-contents)
+;(package-refresh-contents)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -27,7 +30,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (evil-magit with-editor groovy-mode markdown-mode highlight-leading-spaces zenburn-theme ag projectile auto-complete neotree flycheck evil-commentary evil-leader evil-matchit evil-surround evil-terminal-cursor-changer evil-visual-mark-mode evil-visualstar magit resize-window)))
+    (with-editor csv-mode markdown-preview-mode flymd groovy-mode markdown-mode highlight-leading-spaces zenburn-theme ag evil-magit projectile auto-complete neotree flycheck evil-commentary evil-leader evil-matchit evil-surround evil-terminal-cursor-changer evil-visual-mark-mode evil-visualstar magit resize-window)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(show-paren-mode t)
  '(vc-annotate-background "#2B2B2B")
@@ -80,17 +83,35 @@
 (tool-bar-mode -1)
 ;; (global-hl-line-mode 1)
 (modify-syntax-entry ?_ "w")
+; (modify-syntax-entry ?_ "w" text-mode-syntax-table)
+; (modify-syntax-entry ?_ "w" standard-mode-syntax-table)
+; (modify-syntax-entry ?_ "w" standard-syntax-table)
 ;(global-linum-mode 1)
 ;(setq linum-format "%d ")
 (setq vc-follow-symlinks t)
 ; (global-font-lock-mode t)
 
 ;; tabs
-(setq-default indent-tabs-mode nil)
-(setq tab-width 4)
+;(setq-default indent-tabs-mode nil)
+(setq-default c-basic-offset 4
+              tab-width 4
+              indent-tabs-mode nil)
+;(add-hook 'c-mode-common-hook '(lambda () (indent-tabs-mode t)))
 
+(require 'cc-mode)
+(add-to-list 'c-mode-common-hook
+  (lambda ()
+    (setq indent-tabs-mode t)
+    (setq c-syntactic-indentation nil)))
 
-;; ; copy/paste to pbpaste (osx)  
+; (defun my-c-mode-common-hook ()
+;   ;; (setq indent-tabs-mode t)
+;   ;; my customizations for all of c-mode and related modes
+;   ;; (no-case-fold-search)
+;   )
+; (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+;; ; copy/paste to pbpaste (osx)
 ;; ; http://iancmacdonald.com/macos/emacs/tmux/2017/01/15/macOS-tmux-emacs-copy-past.html
 ;; (defun copy-from-osx ()
 ;;   "Use OSX clipboard to paste."
@@ -167,8 +188,12 @@
      (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
      (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
      (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+     (defalias #'forward-evil-word #'forward-evil-symbol)
   )
 )
+
+; (eval-after-load "evil"
+;   (defalias #'forward-evil-word #'forward-evil-symbol))
 
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
@@ -186,6 +211,8 @@
   "tt" 'neotree-toggle
   "tf" 'neotree-project-dir
   "p" 'projectile-find-file
+  "ee" 'eval-last-sexp
+  "er" 'eval-region
 )
 
 (require 'evil-surround)
@@ -208,6 +235,27 @@
 )
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; markdown
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (defun my-flymd-browser-function (url)
+;;     (let ((process-environment (browse-url-process-environment)))
+;;     (apply 'start-process
+;;             (concat "google-chrome " url) nil
+;;             "/usr/bin/open"
+;;             (list "google-chrome" "--new-window" "--allow-file-access-from-files" url))))
+;;             (setq flymd-browser-open-function 'my-flymd-browser-function)
+
+(defun my-flymd-browser-function (url)
+  "Documentation."
+  (let ((process-environment (browse-url-process-environment)))
+    (apply 'start-process
+           (concat "firefox " url)
+           nil
+           "/usr/bin/open"
+           (list "-a" "firefox" url))))
+(setq flymd-browser-open-function 'my-flymd-browser-function)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; more custom
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -223,3 +271,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;; .emacs ends here

@@ -14,4 +14,3 @@ function cd() {
     fi;
     builtin cd "${new_directory}" && ll
 }
-

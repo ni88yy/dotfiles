@@ -70,7 +70,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; magit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (require 'evil-magit)
+(require 'evil-magit)
 (setq magit-display-buffer-function
       (lambda (buffer)
         (display-buffer buffer '(display-buffer-same-window))))
@@ -177,7 +177,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq evil-want-C-u-scroll t)
 (require 'evil)
-(require 'evil-magit)
 (evil-mode t)
 (evil-select-search-module 'evil-search-module 'evil-search)
 (setq-default evil-search-module 'evil-search)

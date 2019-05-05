@@ -1,0 +1,19 @@
+alias git-sync='git checkout master; git fetch upstream; git merge upstream/master; git push; git fetch -p'
+
+alias infra='cd ~/dev/st/av-infra'
+alias api='~/dev/st/av-infra/tools/api-shortcuts/api-shortcuts.sh'
+alias upd-fw="cd ~/dev/st/av-infra/; fab upload_firmware_manifest"
+
+alias dbkey='gpg --decrypt ~/dev/st/st-av-keys/accounts.txt.gpg | grep "api db read-only" -A 2'
+alias dev-db="cd ~/dev/st/av-infra/; fab -u sayreblades H:web02 sqlshell:stav,dbuser=root"
+alias stg-db="cd ~/dev/st/av-infra/; fab -u sayreblades H:web12 sqlshell"
+alias prod-db="cd ~/dev/st/av-infra/; fab -u sayreblades H:web22 sqlshell"
+
+alias sndb="cd ~/dev/st/av-infra/; fab -u sayreblades H:web02 sqlshell:sndb"
+alias sndb-root="cd ~/dev/st/av-infra/; fab -u sayreblades H:web02 sqlshell:sndb,dbuser=root"
+alias sndbkey='gpg --decrypt ~/dev/st/st-av-keys/accounts.txt.gpg | grep "sndb read-only" -A 2'
+alias sndbkey-root='gpg --decrypt ~/dev/st/st-av-keys/deploy-secrets.gpg | grep "SN_DB_PASS"'
+
+alias avp-ftp='ssh sayreblades@sftp01.ec2.st-av.net'
+
+alias dtect-version="adb shell getprop | grep ro.build.version.incremental"
